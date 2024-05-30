@@ -12,7 +12,6 @@ import org.comstudy.web.member.command.MemberCommand;
 // ModelAndView에 addObject로 셋팅 해 준다.
 
 public class MemberController implements Controller {
-	
 	Command cmd = new MemberCommand();
 
 	@Override

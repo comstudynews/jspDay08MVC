@@ -9,9 +9,10 @@ public class BoardCommand implements Command {
 
 	@Override
 	public ModelAndView execute(HttpServletRequest req) {
-		
+		System.out.println(">>> BoardCommand 실행");
 		ModelAndView mav = new ModelAndView("board/list");
 		mav.addObject("message", "게시판 실행 결과");
+		mav.addObject("user", "홍길동");
 		
 		return mav;
 	}

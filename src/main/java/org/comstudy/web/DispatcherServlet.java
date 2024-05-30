@@ -15,18 +15,23 @@ public class DispatcherServlet extends HttpServlet {
 	
 	ServletContext context;
 	
+	ModelAndView mav;
+	Controller ctrl;
+	
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		context = config.getServletContext();
 	}
 
 	protected void process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		context.log("process 실행");
+		context.log(">> process 실행");
 		
-		Controller ctrl = new BoardController();
-		ModelAndView mav = ctrl.action(req);
+		ctrl = new BoardController();
+		mav = ctrl.action(req);
 		// ViewResolver로 전달해서 실행 되도록 한다.
 		
+		ViewResolver viewResolver = new ViewResolver();
+		viewResolver.forward(req, resp, mav);
 	}
 	
 	@Override

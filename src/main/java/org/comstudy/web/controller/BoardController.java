@@ -16,7 +16,7 @@ public class BoardController implements Controller {
 
 	@Override
 	public ModelAndView action(HttpServletRequest req) {
-		
+		System.out.println(">>> BoardController 실행");
 		ModelAndView mnv = cmd.execute(req);
 		
 		return mnv;
