@@ -31,7 +31,17 @@ public class DispatcherServlet extends HttpServlet {
 		// RequestURI에서 (ContextPath + /myweb)부분을 제거 하고 
 		// 만약 endPoint가 있다면 suffix도 제거 되어야 한다. 
 		// 최종적으로 폴더 이름만 urlPattern이 되도록 가공한다.
-		String urlPattern = "/member";
+		String reqUri=req.getRequestURI();
+        String ctxPath=req.getContextPath() + "/myweb";
+        int beginIndex=ctxPath.length();
+        String urlPattern=reqUri.substring(beginIndex);
+        if(urlPattern.lastIndexOf("/") != 0) {
+        	int endIndex = urlPattern.lastIndexOf("/");
+        	urlPattern = urlPattern.substring(0, endIndex);
+        } else {
+        	urlPattern = "/home";
+        }
+        System.out.println("urlPattern => " + urlPattern);
 		
 		ctrl = handlerMapping.getController(urlPattern);
 		mav = ctrl.action(req);

@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.comstudy.web.controller.BoardController;
+import org.comstudy.web.controller.GalleryController;
 import org.comstudy.web.controller.HomeController;
 import org.comstudy.web.controller.MemberController;
 import org.comstudy.web.controller.ShopController;
@@ -19,6 +20,7 @@ public class HandlerMapping {
 		mappings.put("/member", new MemberController());
 		mappings.put("/shop", new ShopController() );
 		mappings.put("/todo", new TodoController());
+		mappings.put("/gallery", new GalleryController());
 	}
 	
 	public Controller getController(String path) {
