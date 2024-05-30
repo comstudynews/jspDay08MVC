@@ -22,8 +22,10 @@ public class HandlerMapping {
 //		mappings.put("/shop", new ShopController() );
 //		mappings.put("/todo", new TodoController());
 //		mappings.put("/gallery", new GalleryController());
-		
 	}
+	
+	// 생성자 오버로딩
+	// 외부에서 배열을 받아서 객체를 생성한다
 	public HandlerMapping(String[] controllerArr) {
 		for(int i=0; i<controllerArr.length; i++) {
 			StringTokenizer tk = new StringTokenizer(controllerArr[i], "=");
@@ -33,7 +35,6 @@ public class HandlerMapping {
 				Controller obj = (Controller)Class.forName(valueStr).newInstance();
 				mappings.put(key, obj);
 			} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
