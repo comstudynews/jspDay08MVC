@@ -1,4 +1,4 @@
-package org.comstudy.web.controller;
+package org.comstudy.web;
 
 public class MainClass {
 
