@@ -14,9 +14,14 @@ import javax.servlet.http.HttpServletResponse;
 public class ViewResolver {
 	private String viewName;
 	private Map<String, Object> model;
-	private String prefix = "/WEB-INF/views/";
-	private String suffix = ".jsp";
+	private String prefix;
+	private String suffix;
 	
+	public ViewResolver(String prefix, String suffix) {
+		this.prefix = prefix;
+		this.suffix = suffix;
+	}
+
 	public void forward(HttpServletRequest req, HttpServletResponse resp, ModelAndView mav) throws ServletException, IOException {
 		System.out.println(">>> ViewResolver 실행");
 		

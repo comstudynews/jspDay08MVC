@@ -12,16 +12,30 @@ import javax.servlet.http.HttpServletResponse;
 import org.comstudy.web.controller.BoardController;
 
 public class DispatcherServlet extends HttpServlet {
+	private ServletContext context;
 	
-	ServletContext context;
+	private HandlerMapping handlerMapping;
+	private ModelAndView mav;
+	private Controller ctrl;
 	
-	HandlerMapping handlerMapping = new HandlerMapping();
-	ModelAndView mav;
-	Controller ctrl;
+	private String prefix;
+	private String suffix;
 	
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		context = config.getServletContext();
+		
+		prefix = config.getInitParameter("prefix");
+		suffix = config.getInitParameter("suffix");
+		String[] ctrlArr = new String[]{
+				"/home=org.comstudy.web.controller.HomeController",
+				"/board=org.comstudy.web.controller.BoardController",
+				"/member=org.comstudy.web.controller.MemberController",
+				"/shop=org.comstudy.web.controller.ShopController",
+				"/todo=org.comstudy.web.controller.TodoController",
+				"/gallery=org.comstudy.web.controller.GalleryController"
+			};
+		handlerMapping = new HandlerMapping( ctrlArr);
 	}
 
 	protected void process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -47,7 +61,7 @@ public class DispatcherServlet extends HttpServlet {
 		mav = ctrl.action(req);
 		// ViewResolver로 전달해서 실행 되도록 한다.
 		
-		ViewResolver viewResolver = new ViewResolver();
+		ViewResolver viewResolver = new ViewResolver(prefix, suffix);
 		viewResolver.forward(req, resp, mav);
 	}
 	

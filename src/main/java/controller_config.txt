@@ -1,0 +1,6 @@
+/home=org.comstudy.web.controller.HomeController
+/board=org.comstudy.web.controller.BoardController
+/gallery=org.comstudy.web.controller.GalleryController
+/member=org.comstudy.web.controller.MemberController
+/shop=org.comstudy.web.controller.ShopController
+/todo=org.comstudy.web.controller.TodoController
