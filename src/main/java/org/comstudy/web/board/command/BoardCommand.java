@@ -13,9 +13,6 @@ public class BoardCommand implements Command {
 		ModelAndView mav = new ModelAndView("board/list");
 		mav.addObject("message", "게시판 실행 결과");
 		
-		return null;
+		return mav;
 	}
-	
-	
-	
 }

@@ -1,5 +1,18 @@
 package org.comstudy.web.member.command;
 
-public class MemberCommand {
+import javax.servlet.http.HttpServletRequest;
 
+import org.comstudy.web.Command;
+import org.comstudy.web.ModelAndView;
+
+public class MemberCommand implements Command {
+
+	@Override
+	public ModelAndView execute(HttpServletRequest req) {
+		
+		ModelAndView mav = new ModelAndView("board/list");
+		mav.addObject("message", "게시판 실행 결과");
+		
+		return mav;
+	}
 }
