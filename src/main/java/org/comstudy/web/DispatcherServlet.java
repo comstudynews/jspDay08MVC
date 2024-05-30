@@ -27,7 +27,13 @@ public class DispatcherServlet extends HttpServlet {
 	protected void process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		context.log(">> process 실행");
 		
-		ctrl = handlerMapping.getController("/member");
+		// 혼자 해보기 ...
+		// RequestURI에서 (ContextPath + /myweb)부분을 제거 하고 
+		// 만약 endPoint가 있다면 suffix도 제거 되어야 한다. 
+		// 최종적으로 폴더 이름만 urlPattern이 되도록 가공한다.
+		String urlPattern = "/member";
+		
+		ctrl = handlerMapping.getController(urlPattern);
 		mav = ctrl.action(req);
 		// ViewResolver로 전달해서 실행 되도록 한다.
 		
