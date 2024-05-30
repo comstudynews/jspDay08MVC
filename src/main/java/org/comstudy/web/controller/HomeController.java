@@ -9,7 +9,10 @@ public class HomeController implements Controller {
 
 	@Override
 	public ModelAndView action(HttpServletRequest req) {
+		System.out.println(">>> HomeController 실행");
+		ModelAndView mav = new ModelAndView("home");
+		mav.addObject("message", "홈페이지");
 		
-		return new ModelAndView("home");
+		return mav;
 	}
 }

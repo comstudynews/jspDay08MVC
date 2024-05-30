@@ -10,7 +10,7 @@
 
 <h1>컴스터디 아카데미</h1>
 <ul>
-	<li><a href="myweb/board">마이웹-게시판</a></li>
+	<li><a href="myweb/board/list.do">마이웹-게시판</a></li>
 </ul>
 
 </body>

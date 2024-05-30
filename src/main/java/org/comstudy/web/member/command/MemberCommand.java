@@ -10,8 +10,8 @@ public class MemberCommand implements Command {
 	@Override
 	public ModelAndView execute(HttpServletRequest req) {
 		
-		ModelAndView mav = new ModelAndView("board/list");
-		mav.addObject("message", "게시판 실행 결과");
+		ModelAndView mav = new ModelAndView("member/list");
+		mav.addObject("message", "회원관리 실행 결과");
 		
 		return mav;
 	}

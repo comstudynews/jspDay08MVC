@@ -15,6 +15,7 @@ public class DispatcherServlet extends HttpServlet {
 	
 	ServletContext context;
 	
+	HandlerMapping handlerMapping = new HandlerMapping();
 	ModelAndView mav;
 	Controller ctrl;
 	
@@ -26,7 +27,7 @@ public class DispatcherServlet extends HttpServlet {
 	protected void process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		context.log(">> process 실행");
 		
-		ctrl = new BoardController();
+		ctrl = handlerMapping.getController("/member");
 		mav = ctrl.action(req);
 		// ViewResolver로 전달해서 실행 되도록 한다.
 		
